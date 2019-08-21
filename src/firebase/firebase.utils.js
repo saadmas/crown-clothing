@@ -13,12 +13,13 @@ const FIREBASE_CONFIG = {
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) return;
+  if (!userAuth) return; // do nothing on sign out
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
+    // create user
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
@@ -32,8 +33,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     } catch (err) {
       console.log('error creating user', err.message);
     }
-    return userRef;
   }
+  return userRef;
 };
 
 firebase.initializeApp(FIREBASE_CONFIG);
