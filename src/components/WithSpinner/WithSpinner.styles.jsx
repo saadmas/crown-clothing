@@ -1,9 +1,9 @@
-import styled from './node_modules/styled-components';
+import styled from 'styled-components';
 
-export const Spinneroverlay = styled.div`
+export const SpinnerOverlay = styled.div`
   height: 60vh;
   width: 100%;
-  display: felx;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
